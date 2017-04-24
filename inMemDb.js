@@ -1,3 +1,5 @@
+/*jshint esversion: 6*/
+
 const users = {
   '1': { name: 'Alice', age: 12, gender: 'f', jobType: 'st' },
   '2': { name: 'Bob', age: 21, gender: 'm', jobType: 'dv' },
@@ -19,37 +21,63 @@ const employer = {
   na: 'N/A'
 };
 
-function byId(id) {
+let youngestAge = 99;
 
+let userArray = [];
+for( var i in users ) {
+    if (users.hasOwnProperty(i)){
+       userArray.push(users[i]);
+    }
+}
+
+
+function byId(id) {
+  console.log(users[id]);
+  return users[id];
 }
 
 function youngest() {
-
+  for (let i = 0; i < userArray.length; i++) {
+    if(userArray[i].age < youngestAge){
+      youngestAge = userArray[i].age;
+    }
+  }
+  for (let j = 0; j < userArray.length; j++) {
+    if(userArray[j].age === youngestAge){
+      console.log(userArray[j].name);
+      return userArray[j].name;
+    }
+  }
 }
 
-function oldest() {
+// function oldest() {
 
-}
+// }
 
-function males () {
+// function males () {
 
-}
+// }
 
-function females() {
+// function females() {
 
-}
+// }
 
-function employees(employer) {
+// function employees(employer) {
 
-}
+// }
 
 const functions = {
   byId: byId,
   youngest: youngest,
-  oldest: oldest,
-  males: males,
-  females: females,
-  employees: employees
+  // oldest: oldest,
+  // males: males,
+  // females: females,
+  // employees: employees
 };
 
+
 module.exports = functions;
+
+
+byId(4);
+youngest();
