@@ -22,6 +22,7 @@ const employer = {
 };
 
 let youngestAge = 99;
+let oldestAge = 0;
 
 let userArray = [];
 for( var i in users ) {
@@ -29,6 +30,9 @@ for( var i in users ) {
        userArray.push(users[i]);
     }
 }
+
+let maleArray = [];
+let femaleArray = [];
 
 
 function byId(id) {
@@ -50,17 +54,39 @@ function youngest() {
   }
 }
 
-// function oldest() {
+function oldest() {
+  for (let i = 0; i < userArray.length; i++) {
+    if(userArray[i].age > oldestAge){
+      oldestAge = userArray[i];
+    }
+  }
+  for (let j = 0; j < userArray.length; j++) {
+    if(userArray[j].age === oldestAge){
+      console.log(userArray[j].name);
+      return userArray[j];
+    }
+  }
+}
 
-// }
+function males () {
+  for (var i = 0; i < userArray.length; i++) {
+    if(userArray[i].gender === 'm'){
+      maleArray.push(userArray[i]);
+    }
+  }
+  console.log(maleArray);
+  return maleArray;
+}
 
-// function males () {
-
-// }
-
-// function females() {
-
-// }
+function females() {
+  for (var i = 0; i < userArray.length; i++) {
+    if(userArray[i].gender === 'f'){
+      femaleArray.push(userArray[i]);
+    }
+  }
+  console.log(femaleArray);
+  return femaleArray;
+}
 
 // function employees(employer) {
 
@@ -69,9 +95,9 @@ function youngest() {
 const functions = {
   byId: byId,
   youngest: youngest,
-  // oldest: oldest,
-  // males: males,
-  // females: females,
+  oldest: oldest,
+  males: males,
+  females: females,
   // employees: employees
 };
 
@@ -79,5 +105,8 @@ const functions = {
 module.exports = functions;
 
 
-byId(4);
-youngest();
+// byId(4);
+// youngest();
+//oldest();
+//males();
+females();
